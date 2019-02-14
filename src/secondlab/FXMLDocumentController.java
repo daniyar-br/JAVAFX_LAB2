@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 
@@ -20,6 +21,8 @@ public class FXMLDocumentController implements Initializable {
     private Label label3;
     @FXML
     private Label label4;
+    @FXML
+    private Button clear;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -67,8 +70,8 @@ public class FXMLDocumentController implements Initializable {
                 };
             }
         }
-        label2.setText("Макс. элемент = " + String.valueOf(max));
-        label3.setText("Мин. элемент = " + String.valueOf(min));
+        label2.setText("Макс. элемент: " + String.valueOf(max));
+        label3.setText("Мин. элемент: " + String.valueOf(min));
 
         int count = 0;
         for (int row = 0; row < table.getItems().size(); row++) {
@@ -89,5 +92,13 @@ public class FXMLDocumentController implements Initializable {
         table.getItems().get(max_row)[max_col] = String.valueOf(new_max);
           
         table.refresh();
+    }
+
+    @FXML
+    private void doClear(ActionEvent event) {
+        // Очистка выведенных значений
+        label2.setText("Макс. элемент: ");
+        label3.setText("Мин. элемент: ");
+        label4.setText("Кол-во отрицательных элементов: ");
     }
 }
